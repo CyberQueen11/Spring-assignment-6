@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.*;
 import java.util.Collection;
 
 @Service("callHandlingService")
-@Transactional(propagation = Propagation.REQUIRES_NEW)
+@Transactional(rollbackFor = {CustomerNotFoundException.class})
 public class CallHandlingServiceImpl implements CallHandlingService{
     private CustomerManagementService customers;
     private DiaryManagementService diaries;
